@@ -26,7 +26,9 @@ L_CFLAGS += -DANDROID_LOG_NAME=\"wpa_supplicant\"
 L_CFLAGS += -Wno-unused-parameter
 
 # Set Android extended P2P functionality
-L_CFLAGS += -DANDROID_P2P
+ifneq ($(BOARD_WLAN_VENDOR),TI)
+  L_CFLAGS += -DANDROID_P2P
+endif
 
 # Disable roaming in wpa_supplicant
 ifdef CONFIG_NO_ROAMING
